@@ -4,6 +4,14 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
 load_dotenv()
 
 TOKEN = os.getenv("TOKEN")
